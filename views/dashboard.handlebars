@@ -1,12 +1,22 @@
-<p>
-<h1 style="text-align: center;">
-	<marquee> Dashboard </marquee>
-</h1>
-</p>
-<p>
-<h3 style="text-align: center;font-family: Verdana;">
-Because that's the way it's meant to be. </h1></p>
-<p style="text-align: center"><button type="button" class="btn btn-default" onclick="logout()"> Logout </button></p>
+<script type="text/javascript">function checkIfLoggedIn() {var data = sessionStorage.getItem('achoc');	if(data != 'nein'){document.getElementById("modal-title").textContent="Error";document.getElementById("modal-text").textContent="Page is currently unavailable.";$('#modal').modal('show');$('#modal').on('hidden.bs.modal', function () {window.location = '/';})}var data = sessionStorage.getItem('user');	document.querySelector('.content .value').innerHTML = data;}window.onload = checkIfLoggedIn;
+</script>
+<div class="navbar-header page-scroll navbar-fixed-top navbar-custom">
+	<div class="container">
+		<div class="navbar-header page-scroll">
+			<a class="navbar-brand" href="/">Chalk</a>
+		</div>
+		<ul class="nav navbar-nav navbar-right">
+			<li>
+				<h3 style="text-align: center; color: White;">
+					<div class="content row">
+						<div class="col-md-10">Hey there, <span class='value'></span> ! :)</div>
+						<div class="col-md-2"> <button type="button" class="btn btn-default" onclick="logout()"> Logout </button></div>
+					</div>
+				</h3>
+			</li>
+		</ul>
+	</div>
+</div>
 <div id="modal" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
