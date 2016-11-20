@@ -1,0 +1,24 @@
+{
+  "name": "handlebars-intro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node apps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JosesLu/handlebars-intro.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JosesLu/handlebars-intro/issues"
+  },
+  "homepage": "https://github.com/JosesLu/handlebars-intro#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0"
+  }
+}

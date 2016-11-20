@@ -1,0 +1,59 @@
+<div class="navbar-header page-scroll navbar-fixed-top navbar-custom">
+	<div class="container">
+		<div class="navbar-header page-scroll">
+			<a class="navbar-brand" href="/">Chalk</a>
+		</div>
+		<ul class="nav navbar-nav navbar-right">
+			<li>
+				<a onclick="indextologin()">Login</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="login-form">
+	
+	<h1>Login</h1>
+	<div class="login-top">
+		<form>
+			<div class="login-ic">
+				<i ></i>
+				<input type="text" class="form-control" id="logEmail" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User name';}"/>
+				<div class="clear"> </div>
+			</div>
+			<div class="login-ic">
+				<i class="icon"></i>
+				<input type="password" class="form-control" id="logPass" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}"/>
+				<div class="clear"> </div>
+			</div>
+			<div class="login-ic">
+				<div class="log-bwn" >
+					<a onclick="login()"><input type="button" class="btn btn-default"  value="Login"> </input>	</a>	
+				</div>
+			</div>
+			<div >
+				<div class="log-bwn" >
+					<a href="register"><input type="button" class="btn btn-default"  onclick="show()" value="Register"> </input>	</a>	
+				</div>
+			</div>
+		</form>
+	</div>
+	<p class="copy">© <a href="https://twitter.com/heyimjoses" target="_blank">joses</a></p>
+</div>
+<!--REGISTER MODAL -->
+<div id="modal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title " id="modal-title"></h4>
+			</div>
+			<div class="modal-body">
+				<p id="modal-text">	</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
