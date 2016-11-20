@@ -13,5 +13,5 @@ This is a project by Joses Lu which is to be submitted for the class ```Computer
 - [x] Authentication through Passport/Session/Cookies
 
 
-![Thumbs Up](http://curiousfan.com/wp-content/uploads/2015/05/emilia-clarke-jason-kim-photoshoot-for-glamour-magazine-france-april-2014-issue_1.jpg)
+![Thumbs Up](http://thestudioexec.com/wp-content/uploads/2015/04/dany.jpg)
 :joy:
