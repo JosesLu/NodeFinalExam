@@ -19,6 +19,7 @@
   "homepage": "https://github.com/JosesLu/handlebars-intro#readme",
   "dependencies": {
     "express": "^4.14.0",
-    "express-handlebars": "^3.0.0"
+    "express-handlebars": "^3.0.0",
+    "json-server": "^0.9.1"
   }
 }
