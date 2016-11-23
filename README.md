@@ -11,7 +11,7 @@ This is a project by Joses Lu which is to be submitted for the class ```Computer
 - [x] Create README
 - [x] Write to JSON files through JSON Server
 - [x] Authentication through Session
-- [] Update to existing code to support MYSQL Database
+- [x] Update existing code to support MYSQL Database
 - [] Authentication through Passport
 
 
