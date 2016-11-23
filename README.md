@@ -12,7 +12,7 @@ This is a project by Joses Lu which is to be submitted for the class ```Computer
 - [x] Write to JSON files through JSON Server
 - [x] Authentication through Session
 - [x] Update existing code to support MYSQL Database
-- [] Authentication through Passport
+- [ ] Authentication through Passport
 
 
 ![Thumbs Up](http://thestudioexec.com/wp-content/uploads/2015/04/dany.jpg)
