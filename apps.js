@@ -5,6 +5,25 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var app = express();
 
+/////////DATABASE LOGIN CONNECTION/////////
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '',
+  database : 'chalk'
+});
+connection.connect();
+connection.query("SELECT * FROM users", function(err, rows, fields) {
+  if (err) {
+  	console.error(err);
+  	return;
+ }
+ else
+ {
+ 	db = rows
+ }
+});
+////////////////////////////////////////
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -33,23 +52,7 @@ app.get('/redirect', function(req,res) {
 	res.render('login');
 })
 app.get('/db', function(req,res) {
-	var connection = mysql.createConnection({
-	  host     : 'localhost',
-	  user     : 'root',
-	  password : '',
-	  database : 'chalk'
-	});
-	connection.connect();
-	connection.query("SELECT * FROM users", function(err, rows, fields) {
-	  if (err) {
-	  	console.error(err);
-	  	return;
-	 }
-	 else
-	 {
-	 	db = rows
-	 }
-});
+
 	res.send(JSON.stringify(db));
 });
 
