@@ -10,7 +10,9 @@ This is a project by Joses Lu which is to be submitted for the class ```Computer
 - [x] Basic Dashboard
 - [x] Create README
 - [x] Write to JSON files through JSON Server
-- [x] Authentication through Passport/Session/Cookies
+- [x] Authentication through Session
+- [] Update to existing code to support MYSQL Database
+- [] Authentication through Passport
 
 
 ![Thumbs Up](http://thestudioexec.com/wp-content/uploads/2015/04/dany.jpg)

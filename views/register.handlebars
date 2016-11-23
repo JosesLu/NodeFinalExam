@@ -15,25 +15,25 @@
 	
 	<h1>Register</h1>
 	<div class="login-top">
-		<form>
+		<form method="POST" action="save">
 			<div class="login-ic">
-				<i ></i>
-				<input type="text" class="form-control" id="regEmail" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = ' ';}"/>
+				<i></i>
+				<input type="text" class="form-control" name="regEmail" id="regEmail" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}"/>
 				<div class="clear"> </div>
 			</div>
 			<div class="login-ic">
 				<i class="icon"></i>
-				<input type="password" class="form-control" id="regPass" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}"/>
+				<input type="password" class="form-control" name="regPass" id="regPass" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}"/>
 				<div class="clear"> </div>
 			</div>
 			<div class="login-ic">
 				<i class="icon"></i>
-				<input type="password" class="form-control" id="regConfPass" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}"/>
+				<input type="password" class="form-control" name="regConfPass" id="regConfPass" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}"/>
 				<div class="clear"> </div>
 			</div>
 			<div class="login-ic">
 				<div class="log-bwn" >
-					<a onclick="register()"><input type="button" class="btn btn-default" id="kek" value="Register"> </input>	</a>	
+					<input type="submit" class="btn btn-default" id="kek" value="Register"> </input>	
 				</div>
 			</div>
 		</form>

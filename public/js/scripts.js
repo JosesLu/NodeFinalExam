@@ -43,19 +43,6 @@ function register() {
 	var regEmail = document.getElementById('regEmail').value;
 	var regPass = document.getElementById('regPass').value;
 	var regConfPass = document.getElementById('regConfPass').value;
-	$.ajax({
-		type: "POST",
-		url: 'http://localhost:3000/users/',
-		data: {
-			"username": regEmail,
-			"password": regPass
-
-		},
-		success: function() {
-			console.log("Added Successfully");
-		},
-
-	});
 	if (regPass != regConfPass) {
 		passwordMismatchError();
 		counter = 1;
@@ -91,23 +78,32 @@ function register() {
 
 
 function login() {
+	$.ajax({
+		url: 'http://localhost:8080/db',
+		type: 'GET',
+		contentType: 'application/json; charset=utf-8',
+		dataType: 'json',
 
-	var counter = 0;
-	var logEmail = $('#logEmail').val();
-	var logPass = $('#logPass').val();
-	$.getJSON('data.json', function(data) {
+		success : function(data) {
+			var length = data.length;
+			renderHTML(data,length);
+		}
+	});
+	function renderHTML(data,length){
 
-		var obj = jQuery.parseJSON(JSON.stringify(data));
+		var htUsername = $("#logEmail").val();
+		var htPassword = $("#logPass").val();
+		for(i = 0; i < length ; i++){
+			var username = data[i].username;
+			var password = data[i].password;
 
-		for (var i = 0; i < obj.users.length; i++) {
-			if (logEmail == obj.users[i].username && logPass == obj.users[i].password) {
-				document.getElementById("modal-title").textContent = "Success";
+			if(username == htUsername && password == htPassword)
+			{
 				document.getElementById("modal-text").textContent = "Login Successful";
 				$('#modal').modal('show');
-				currentUser = logEmail;
+				currentUser = htUsername;
 				$('#logEmail').val('');
 				$('#logPass').val('');
-				counter++;
 				sessionStorage.setItem('achoc', 'nein');
 				sessionStorage.setItem('user', currentUser);
 				window.location = '/dashboard';
@@ -115,19 +111,7 @@ function login() {
 			}
 
 		}
-
-	});
-
-	if (counter == 0) {
-		document.getElementById("modal-title").textContent = "Error";
-		document.getElementById("modal-text").textContent = "Incorrect Email/Password";
-
-		$('#modal').modal('show');
-		$('#logEmail').val('');
-		$('#logPass').val('');
 	}
-	counter = 0;
-
 };
 
 function logout() {
@@ -162,3 +146,4 @@ function rememberMe() {
 	}
 
 }
+

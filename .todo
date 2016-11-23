@@ -7,5 +7,5 @@
  ✔ Created repository for login/register app @done (16-11-14 08:09)
  ✔ Convert static html files to use Handlebars @done (16-11-14 08:10)
  ✔ Created README @done (16-11-14 08:10)
- ☐ Authentication through Passport/Session/Cookies
+ ✔ Authentication through Passport/Session/Cookies @done (16-11-22 05:36)
  ✔ Write to json files using json server @done (16-11-18 11:58)
