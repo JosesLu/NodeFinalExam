@@ -2,77 +2,93 @@ var email = [];
 var password = [];
 var currentUser = "";
 
+
 function passwordMismatchError() {
 	document.getElementById("modal-title").textContent = "Error";
 	document.getElementById("modal-text").textContent = "Passwords do not match";
 	$('#modal').modal('show');
-	$('#regEmail').val('');
-	$('#regPass').val('');
-	$('#regConfPass').val('');
+	$('#regEmail1').val('');
+	$('#regPass1').val('');
+	$('#regConfPass1').val('');
+	$('#modal').on('hidden.bs.modal', function () {window.location = '/register';})
 }
 
 function emailError() {
 	document.getElementById("modal-title").textContent = "Error";
 	document.getElementById("modal-text").textContent = "Email must contain atleast 3 characters.";
 	$('#modal').modal('show');
-	$('#regEmail').val('');
-	$('#regPass').val('');
-	$('#regConfPass').val('');
+	$('#regEmail1').val('');
+	$('#regPass1').val('');
+	$('#regConfPass1').val('');
+	$('#modal').on('hidden.bs.modal', function () {window.location = '/register';})
 }
 
 function passwordLengthError() {
 	document.getElementById("modal-title").textContent = "Error";
 	document.getElementById("modal-text").textContent = "Passwords must contain atleast 8 characters.";
 	$('#modal').modal('show');
-	$('#regEmail').val('');
-	$('#regPass').val('');
-	$('#regConfPass').val('');
+	$('#regEmail1').val('');
+	$('#regPass1').val('');
+	$('#regConfPass1').val('');
+	$('#modal').on('hidden.bs.modal', function () {window.location = '/register';})
 }
 
 function emptyFieldsError() {
 	document.getElementById("modal-title").textContent = "Error";
 	document.getElementById("modal-text").textContent = "All fields require input.";
 	$('#modal').modal('show');
-	$('#regEmail').val('');
-	$('#regPass').val('');
-	$('#regConfPass').val('');
+	$('#regEmail1').val('');
+	$('#regPass1').val('');
+	$('#regConfPass1').val('');
+	$('#modal').on('hidden.bs.modal', function () {window.location = '/register';})
+}
+
+function errorSet() {
+	var error = sessionStorage.getItem('registrationError');
+	document.getElementById("hack").innerHTML = error;
 }
 
 function register() {
 	var counter = 0;
-	var regEmail = document.getElementById('regEmail').value;
-	var regPass = document.getElementById('regPass').value;
-	var regConfPass = document.getElementById('regConfPass').value;
-	if (regPass != regConfPass) {
+	var regEmail1 = document.getElementById('regEmail').value;
+	var regPass1 = document.getElementById('regPass').value;
+	var regConfPass1 = document.getElementById('regConfPass').value;
+	if (regPass1 != regConfPass1) {
 		passwordMismatchError();
+		sessionStorage.setItem('registrationError', '1');
 		counter = 1;
 	}
-	if (regPass.length < 8) {
+	if (regPass1.length < 8) {
 		passwordLengthError();
+		sessionStorage.setItem('registrationError', '1');
 		counter = 1;
 	}
-	if (regEmail.length < 3) {
+	if (regEmail1.length < 3) {
 		emailError();
+		sessionStorage.setItem('registrationError', '1');
 		counter = 1;
 	}
-	if (regEmail.length < 1 && regPass < 1 && regConfPass < 1) {
+	if (regEmail1.length < 1 && regPass1 < 1 && regConfPass1 < 1) {
 		emptyFieldsError();
+		sessionStorage.setItem('registrationError', '1');
 		counter = 1;
 	}
 	if (counter == 0) {
+		sessionStorage.setItem('registrationError', '0');
+		window.location = '/register';
 		document.getElementById("modal-title").textContent = "Success";
 		document.getElementById("modal-text").textContent = "Registration Complete";
-
+	
 		$('#modal').modal('show');
-		$('#regEmail').val('');
-		$('#regPass').val('');
-		$('#regConfPass').val('');
+		$('#regEmail1').val('');
+		$('#regPass1').val('');
+		$('#regConfPass1').val('');
 		$('#modal').on('hidden.bs.modal', function() {
 			window.location = '/login';
 		})
 	}
 	counter = 0;
-
+	location.reload();
 
 };
 
@@ -106,6 +122,7 @@ function login() {
 				$('#logPass').val('');
 				sessionStorage.setItem('achoc', 'nein');
 				sessionStorage.setItem('user', currentUser);
+				sessionStorage.removeItem('registrationError');
 				window.location = '/dashboard';
 
 			}
@@ -120,9 +137,9 @@ function logout() {
 	document.getElementById("modal-title").textContent = "Success";
 	document.getElementById("modal-text").textContent = "You have successfuly logged out.";
 	$('#modal').modal('show');
-	$('#regEmail').val('');
-	$('#regPass').val('');
-	$('#regConfPass').val('');
+	$('#regEmail1').val('');
+	$('#regPass1').val('');
+	$('#regConfPass1').val('');
 	$('#modal').on('hidden.bs.modal', function() {
 		window.location = '/';
 	})

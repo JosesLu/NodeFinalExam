@@ -1,3 +1,9 @@
+<script>
+function errorchecker() {
+	var data = sessionStorage.getItem('registrationError');
+	document.getElementById("hack").value = data;
+}	window.onload = errorchecker;
+</script>
 <div class="navbar-header page-scroll navbar-fixed-top navbar-custom">
 	<div class="container">
 		<div class="navbar-header page-scroll">
@@ -18,22 +24,23 @@
 		<form method="POST" action="save">
 			<div class="login-ic">
 				<i></i>
-				<input type="text" class="form-control" name="regEmail" id="regEmail" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}"/>
+			<!--	<input type="text" class="form-control" name="hack" id="hack"/>-->
+				<input type="text" class="form-control" name="regEmail" id="regEmail" value=""/>
 				<div class="clear"> </div>
 			</div>
 			<div class="login-ic">
 				<i class="icon"></i>
-				<input type="password" class="form-control" name="regPass" id="regPass" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}"/>
+				<input type="password" class="form-control" name="regPass" id="regPass" value=""/>
 				<div class="clear"> </div>
 			</div>
 			<div class="login-ic">
 				<i class="icon"></i>
-				<input type="password" class="form-control" name="regConfPass" id="regConfPass" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}"/>
+				<input type="password" class="form-control" name="regConfPass" id="regConfPass" value=""s/>
 				<div class="clear"> </div>
 			</div>
 			<div class="login-ic">
 				<div class="log-bwn" >
-					<input type="submit" class="btn btn-default" id="kek" value="Register"> </input>	
+					<input onclick="register()" type="submit" class="btn btn-default" id="kek" value="Register" > </input> 
 				</div>
 			</div>
 		</form>
@@ -41,7 +48,7 @@
 	<p class="copy">©  All rights reserved | Design by  <a href="/" target="_blank">Joses</a></p>
 </div>
 <!--REGISTER MODAL -->
-<div id="modal" class="modal fade" role="dialog">
+<div id="modal" class="modal fade" role="dialog" runat="server">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">

@@ -20,7 +20,7 @@ connection.query("SELECT * FROM users", function(err, rows, fields) {
  }
  else
  {
- 	db = rows
+ 	db = rows;
  }
 });
 ////////////////////////////////////////
@@ -61,6 +61,26 @@ app.post('/save', function(req,res) {
 	var regEmail = req.body.regEmail;
 	var regPass = req.body.regPass;
 	var regConfPass = req.body.regConfPass;
+	var errorval = req.body.hack;
+
+	if (regPass != regConfPass) {
+		//('#modal').modal('show');
+		counter = 1;
+	}
+	if (regPass.length < 8) {
+		//('#modal').modal('show');
+		counter = 1;
+	}
+	if (regEmail.length < 3) {
+		//('#modal').modal('show');
+		counter = 1;
+	}
+	if (regEmail.length < 1 && regPass < 1 && regConfPass < 1) {
+		//('#modal').modal('show');
+		counter = 1;
+	}
+
+
 
 	var user = {
 		username: regEmail,
@@ -82,9 +102,31 @@ app.post('/save', function(req,res) {
 	 }
 	  console.log("Success!");
 	  res.render('redirect');
+	  var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '',
+  database : 'chalk'
+});
+connection.connect();
+connection.query("SELECT * FROM users", function(err, rows, fields) {
+  if (err) {
+  	console.error(err);
+  	return;
+ }
+ else
+ {
+ 	db = rows;
+ }
+});
 	});
+/////refresh datab
 
-})
+
+
+
+
+});
 
 
 
