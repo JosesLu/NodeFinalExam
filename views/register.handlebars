@@ -1,9 +1,3 @@
-<script>
-function errorchecker() {
-	var data = sessionStorage.getItem('registrationError');
-	document.getElementById("hack").value = data;
-}	window.onload = errorchecker;
-</script>
 <div class="navbar-header page-scroll navbar-fixed-top navbar-custom">
 	<div class="container">
 		<div class="navbar-header page-scroll">
@@ -24,7 +18,6 @@ function errorchecker() {
 		<form method="POST" action="save">
 			<div class="login-ic">
 				<i></i>
-			<!--	<input type="text" class="form-control" name="hack" id="hack"/>-->
 				<input type="text" class="form-control" name="regEmail" id="regEmail" value=""/>
 				<div class="clear"> </div>
 			</div>

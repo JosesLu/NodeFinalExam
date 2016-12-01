@@ -2,94 +2,99 @@ var email = [];
 var password = [];
 var currentUser = "";
 
-
 function passwordMismatchError() {
+	window.alert("Passwords do not match");
+	/*
 	document.getElementById("modal-title").textContent = "Error";
 	document.getElementById("modal-text").textContent = "Passwords do not match";
 	$('#modal').modal('show');
+	*/
 	$('#regEmail1').val('');
 	$('#regPass1').val('');
 	$('#regConfPass1').val('');
 	$('#modal').on('hidden.bs.modal', function () {window.location = '/register';})
+	window.location = '/register';
 }
 
 function emailError() {
+	window.alert("Email must contain atleast 3 characters.");
+	/*
 	document.getElementById("modal-title").textContent = "Error";
 	document.getElementById("modal-text").textContent = "Email must contain atleast 3 characters.";
 	$('#modal').modal('show');
+	*/
 	$('#regEmail1').val('');
 	$('#regPass1').val('');
 	$('#regConfPass1').val('');
 	$('#modal').on('hidden.bs.modal', function () {window.location = '/register';})
+	window.location = '/register';
 }
 
 function passwordLengthError() {
+	window.alert("Passwords must contain atleast 8 characters.");
+	/*
 	document.getElementById("modal-title").textContent = "Error";
 	document.getElementById("modal-text").textContent = "Passwords must contain atleast 8 characters.";
 	$('#modal').modal('show');
+	*/
 	$('#regEmail1').val('');
 	$('#regPass1').val('');
 	$('#regConfPass1').val('');
 	$('#modal').on('hidden.bs.modal', function () {window.location = '/register';})
+	window.location = '/register';
 }
 
 function emptyFieldsError() {
+	window.alert("All fields require input.");
+	/*
 	document.getElementById("modal-title").textContent = "Error";
 	document.getElementById("modal-text").textContent = "All fields require input.";
-	$('#modal').modal('show');
+	$('#modal').modal('show');	
+	*/
 	$('#regEmail1').val('');
 	$('#regPass1').val('');
 	$('#regConfPass1').val('');
 	$('#modal').on('hidden.bs.modal', function () {window.location = '/register';})
+	window.location = '/register';
 }
-
-function errorSet() {
-	var error = sessionStorage.getItem('registrationError');
-	document.getElementById("hack").innerHTML = error;
+function registrationSuccess() {
+	window.alert("Registration complete.");
+	/*
+	document.getElementById("modal-title").textContent = "Success";
+	document.getElementById("modal-text").textContent = "Registration complete.";
+	$('#modal').modal('show');
+	*/
+	$('#regEmail1').val('');
+	$('#regPass1').val('');
+	$('#regConfPass1').val('');
+	$('#modal').on('hidden.bs.modal', function () {window.location = '/login';})
+	window.location = '/register';
 }
-
 function register() {
 	var counter = 0;
 	var regEmail1 = document.getElementById('regEmail').value;
 	var regPass1 = document.getElementById('regPass').value;
 	var regConfPass1 = document.getElementById('regConfPass').value;
-	if (regPass1 != regConfPass1) {
+	if (regPass1 != regConfPass1 && counter == 0) {
 		passwordMismatchError();
-		sessionStorage.setItem('registrationError', '1');
 		counter = 1;
 	}
-	if (regPass1.length < 8) {
+	if (regPass1.length < 8 && counter == 0) {
 		passwordLengthError();
-		sessionStorage.setItem('registrationError', '1');
 		counter = 1;
 	}
-	if (regEmail1.length < 3) {
+	if (regEmail1.length < 3 && counter == 0) {
 		emailError();
-		sessionStorage.setItem('registrationError', '1');
 		counter = 1;
 	}
-	if (regEmail1.length < 1 && regPass1 < 1 && regConfPass1 < 1) {
+	if (regEmail1.length < 1 && regPass1 < 1 && regConfPass1 < 1 && counter == 0) {
 		emptyFieldsError();
-		sessionStorage.setItem('registrationError', '1');
 		counter = 1;
 	}
-	if (counter == 0) {
-		sessionStorage.setItem('registrationError', '0');
-		window.location = '/register';
-		document.getElementById("modal-title").textContent = "Success";
-		document.getElementById("modal-text").textContent = "Registration Complete";
-	
-		$('#modal').modal('show');
-		$('#regEmail1').val('');
-		$('#regPass1').val('');
-		$('#regConfPass1').val('');
-		$('#modal').on('hidden.bs.modal', function() {
-			window.location = '/login';
-		})
+	if (counter == 0){
+		registrationSuccess();
 	}
 	counter = 0;
-	location.reload();
-
 };
 
 
@@ -149,18 +154,3 @@ function logout() {
 function indextologin() {
 	window.location = '/login';
 }
-
-
-function rememberMe() {
-	if (localStorage.chkbx && localStorage.chkbx != '') {
-		$('#remember_me').attr('checked', 'checked');
-		$('#logEmail').val(localStorage.usrname);
-		$('#logPass').val(localStorage.pass);
-	} else {
-		$('#remember_me').removeAttr('checked');
-		$('#logEmail').val('');
-		$('#logPass').val('');
-	}
-
-}
-

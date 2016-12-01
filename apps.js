@@ -52,7 +52,6 @@ app.get('/redirect', function(req,res) {
 	res.render('login');
 })
 app.get('/db', function(req,res) {
-
 	res.send(JSON.stringify(db));
 });
 
@@ -61,67 +60,64 @@ app.post('/save', function(req,res) {
 	var regEmail = req.body.regEmail;
 	var regPass = req.body.regPass;
 	var regConfPass = req.body.regConfPass;
-	var errorval = req.body.hack;
 
 	if (regPass != regConfPass) {
-		//('#modal').modal('show');
 		counter = 1;
 	}
 	if (regPass.length < 8) {
-		//('#modal').modal('show');
 		counter = 1;
 	}
 	if (regEmail.length < 3) {
-		//('#modal').modal('show');
 		counter = 1;
 	}
 	if (regEmail.length < 1 && regPass < 1 && regConfPass < 1) {
-		//('#modal').modal('show');
 		counter = 1;
 	}
 
 
-
-	var user = {
-		username: regEmail,
-		password: regPass
-	}
-	
-	var connection = mysql.createConnection({
-	  host     : 'localhost',
-	  user     : 'root',
-	  password : '',
-	  database : 'chalk'
-	});
-	connection.connect();
-	 
-	connection.query("INSERT into users set ?", user , function(err, rows, fields) {
-	  if (err) {
-	  	console.error(err);
-	  	return;
-	 }
-	  console.log("Success!");
-	  res.render('redirect');
-	  var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'chalk'
-});
-connection.connect();
-connection.query("SELECT * FROM users", function(err, rows, fields) {
-  if (err) {
-  	console.error(err);
-  	return;
- }
- else
- {
- 	db = rows;
- }
-});
-	});
-/////refresh datab
-
+	if(counter == 0)
+	{
+		var user = {
+			username: regEmail,
+			password: regPass
+		}
+		
+		var connection = mysql.createConnection({
+		  host     : 'localhost',
+		  user     : 'root',
+		  password : '',
+		  database : 'chalk'
+		});
+		connection.connect();
+		 
+		connection.query("INSERT into users set ?", user , function(err, rows, fields) {
+		  if (err) {
+		  	console.error(err);
+		  	return;
+		 }
+		  console.log("Success!");
+		  res.render('redirect');
+		  var connection = mysql.createConnection({
+		  host     : 'localhost',
+		  user     : 'root',
+		  password : '',
+		  database : 'chalk'
+		});
+		connection.connect();
+		connection.query("SELECT * FROM users", function(err, rows, fields) {
+		  if (err) {
+		  	console.error(err);
+		  	return;
+		 }
+		 else
+		 {
+		 	db = rows;
+		 }
+		});
+		});
+	/////refresh datab
+	counter = 0;
+}
 
 
 
