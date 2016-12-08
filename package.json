@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "wdio",
     "start": "node apps"
   },
   "repository": {
@@ -19,9 +19,15 @@
   "homepage": "https://github.com/JosesLu/handlebars-intro#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
-    "modal-dialog": "^1.6.3",
-    "mysql": "^2.12.0"
+    "mocha": "^3.2.0",
+    "mysql": "^2.12.0",
+    "selenium-standalone": "^5.8.0"
+  },
+  "devDependencies": {
+    "wdio-mocha-framework": "^0.5.4",
+    "webdriverio": "^4.4.0"
   }
 }

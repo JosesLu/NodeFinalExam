@@ -60,19 +60,23 @@ app.post('/save', function(req,res) {
 	var regEmail = req.body.regEmail;
 	var regPass = req.body.regPass;
 	var regConfPass = req.body.regConfPass;
+	if (regEmail.length < 1 && regPass < 1 && regConfPass < 1 && counter == 0) {
+		counter = 1;
+		res.render('redirect');
+	}
+	if (regPass != regConfPass && counter == 0) {
+		counter = 1;
+		res.render('redirect');
+	}
+	if (regPass.length < 8 && counter == 0) {
+		counter = 1;
+		res.render('redirect');
+	}
+	if (regEmail.length < 3 && counter == 0) {
+		counter = 1;
+		res.render('redirect');
+	}
 
-	if (regPass != regConfPass) {
-		counter = 1;
-	}
-	if (regPass.length < 8) {
-		counter = 1;
-	}
-	if (regEmail.length < 3) {
-		counter = 1;
-	}
-	if (regEmail.length < 1 && regPass < 1 && regConfPass < 1) {
-		counter = 1;
-	}
 
 
 	if(counter == 0)
@@ -115,11 +119,10 @@ app.post('/save', function(req,res) {
 		 }
 		});
 		});
+		
 	/////refresh datab
 	counter = 0;
 }
-
-
 
 
 });

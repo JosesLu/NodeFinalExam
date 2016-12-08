@@ -12,7 +12,7 @@ function passwordMismatchError() {
 	$('#regEmail1').val('');
 	$('#regPass1').val('');
 	$('#regConfPass1').val('');
-	$('#modal').on('hidden.bs.modal', function () {window.location = '/register';})
+
 	window.location = '/register';
 }
 
@@ -26,7 +26,7 @@ function emailError() {
 	$('#regEmail1').val('');
 	$('#regPass1').val('');
 	$('#regConfPass1').val('');
-	$('#modal').on('hidden.bs.modal', function () {window.location = '/register';})
+
 	window.location = '/register';
 }
 
@@ -40,7 +40,7 @@ function passwordLengthError() {
 	$('#regEmail1').val('');
 	$('#regPass1').val('');
 	$('#regConfPass1').val('');
-	$('#modal').on('hidden.bs.modal', function () {window.location = '/register';})
+
 	window.location = '/register';
 }
 
@@ -54,8 +54,21 @@ function emptyFieldsError() {
 	$('#regEmail1').val('');
 	$('#regPass1').val('');
 	$('#regConfPass1').val('');
-	$('#modal').on('hidden.bs.modal', function () {window.location = '/register';})
+
 	window.location = '/register';
+}
+function loginemptyFieldsError() {
+	window.alert("All fields require input.");
+	/*
+	document.getElementById("modal-title").textContent = "Error";
+	document.getElementById("modal-text").textContent = "All fields require input.";
+	$('#modal').modal('show');	
+	*/
+	$('#regEmail1').val('');
+	$('#regPass1').val('');
+	$('#regConfPass1').val('');
+
+
 }
 function registrationSuccess() {
 	window.alert("Registration complete.");
@@ -67,7 +80,7 @@ function registrationSuccess() {
 	$('#regEmail1').val('');
 	$('#regPass1').val('');
 	$('#regConfPass1').val('');
-	$('#modal').on('hidden.bs.modal', function () {window.location = '/login';})
+
 	window.location = '/register';
 }
 function register() {
@@ -75,6 +88,11 @@ function register() {
 	var regEmail1 = document.getElementById('regEmail').value;
 	var regPass1 = document.getElementById('regPass').value;
 	var regConfPass1 = document.getElementById('regConfPass').value;
+	if (regEmail1.length < 1 && regPass1 < 1 && regConfPass1 < 1 && counter == 0) {
+		emptyFieldsError();
+		window.location = '/register';
+		counter = 1;
+	}
 	if (regPass1 != regConfPass1 && counter == 0) {
 		passwordMismatchError();
 		counter = 1;
@@ -87,10 +105,7 @@ function register() {
 		emailError();
 		counter = 1;
 	}
-	if (regEmail1.length < 1 && regPass1 < 1 && regConfPass1 < 1 && counter == 0) {
-		emptyFieldsError();
-		counter = 1;
-	}
+	
 	if (counter == 0){
 		registrationSuccess();
 	}
@@ -111,12 +126,19 @@ function login() {
 		}
 	});
 	function renderHTML(data,length){
-
+		var counter=0;
+		var counter1=0;
 		var htUsername = $("#logEmail").val();
 		var htPassword = $("#logPass").val();
 		for(i = 0; i < length ; i++){
 			var username = data[i].username;
 			var password = data[i].password;
+
+			if(htUsername == '' || htPassword == '')
+			{
+				loginemptyFieldsError();
+				counter = 1;
+			}
 
 			if(username == htUsername && password == htPassword)
 			{
@@ -129,25 +151,26 @@ function login() {
 				sessionStorage.setItem('user', currentUser);
 				sessionStorage.removeItem('registrationError');
 				window.location = '/dashboard';
+				counter1=1;
 
 			}
-
+			if (htUsername != '' && htPassword != '' && counter == 0 && counter1 == 0) {
+				window.alert('Username or Password incorrect.');
+				$("#logEmail").val('');
+				$("#logPass").val('');
+			}
+			
 		}
+
 	}
 };
 
 function logout() {
 	sessionStorage.removeItem('achoc');
 	sessionStorage.removeItem('user');
-	document.getElementById("modal-title").textContent = "Success";
-	document.getElementById("modal-text").textContent = "You have successfuly logged out.";
-	$('#modal').modal('show');
-	$('#regEmail1').val('');
-	$('#regPass1').val('');
-	$('#regConfPass1').val('');
-	$('#modal').on('hidden.bs.modal', function() {
-		window.location = '/';
-	})
+	window.alert('You have successfully logged out.');
+	window.location = '/';
+	
 
 }
 
