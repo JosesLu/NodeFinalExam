@@ -1,4 +1,14 @@
-<script type="text/javascript">function checkIfLoggedIn() {var data = sessionStorage.getItem('achoc');	if(data != 'nein'){document.getElementById("modal-title").textContent="Error";document.getElementById("modal-text").textContent="Page is currently unavailable.";$('#modal').modal('show');$('#modal').on('hidden.bs.modal', function () {window.location = '/';})}var data = sessionStorage.getItem('user');	document.querySelector('.content .value').innerHTML = data;}window.onload = checkIfLoggedIn;
+<script type="text/javascript">function checkIfLoggedIn() {
+	populateTable();
+	var data = sessionStorage.getItem('achoc');
+	if (data != 'nein') {
+		alert('Page Unavailable');
+		window.location = '/';	
+	}
+	var data = sessionStorage.getItem('user');
+	document.querySelector('.content .value').innerHTML = data;
+}
+window.onload = checkIfLoggedIn;
 </script>
 <div class="navbar-header page-scroll navbar-fixed-top navbar-custom">
 	<div class="container">
@@ -16,6 +26,18 @@
 			</li>
 		</ul>
 	</div>
+</div>
+<div class="login-form">
+	<h1>USERS</h1>
+	<div class="login-top">
+		<table id="userTable">
+			<tr>
+				<th style="text-align: center;">Username</th>
+				<th style="text-align: center;">ID</th>
+			</tr>
+		</table>
+	</div>
+	<p class="copy">©  All rights reserved | Design by  <a href="/" target="_blank">Joses</a></p>
 </div>
 <div id="modal" class="modal fade" role="dialog">
 	<div class="modal-dialog">

@@ -54,6 +54,9 @@ app.get('/redirect', function(req,res) {
 app.get('/db', function(req,res) {
 	res.send(JSON.stringify(db));
 });
+app.get('/fly', function(req,res) {
+	res.render('hah');
+});
 
 app.post('/save', function(req,res) {
 	var counter = 0;
