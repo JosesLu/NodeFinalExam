@@ -1,7 +1,3 @@
-<script type="text/javascript">var wname = window.name;
-if(wname == "Register" || wname == "Update" || wname == "Delete"){
-			window.close(); 
-		}</script>
 <div class="navbar-header page-scroll navbar-fixed-top navbar-custom">
 	<div class="container">
 		<div class="navbar-header page-scroll">
@@ -9,41 +5,39 @@ if(wname == "Register" || wname == "Update" || wname == "Delete"){
 		</div>
 		<ul class="nav navbar-nav navbar-right">
 			<li>
-				<a onclick="indextologin()">Login</a>
+				
 			</li>
 		</ul>
 	</div>
 </div>
+
 <div class="login-form">
-	<h1>Login</h1>
+	
+	<h1>Update</h1>
 	<div class="login-top">
-		<form>
+		<form method="POST" action="update">
+			<label style="color:white">ID of user to be Updated</label>
 			<div class="login-ic">
-				<i ></i>
-				<input type="text" class="form-control" name="logEmail" id="logEmail" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}"/>
+				<input type="text" class="form-control" name="id2up" id="id2up" value=""/>
 				<div class="clear"> </div>
 			</div>
+			<label style="color:white">New Username Value</label>
 			<div class="login-ic">
-				<i class="icon"></i>
-				<input type="password" class="form-control" name="logPass" id="logPass" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}"/>
+
+				<input type="text" class="form-control" name="usn2up" id="usn2up" value=""/>
 				<div class="clear"> </div>
 			</div>
 			<div class="login-ic">
 				<div class="log-bwn" >
-					<a onclick="login()"><input type="button" class="btn btn-default" value="Login" id="login-button"> </input>	</a>	
-				</div>
-			</div>
-			<div >
-				<div class="log-bwn" >
-					<a href="register"><input type="button" class="btn btn-default"  onclick="show()" value="Register"> </input>	</a>	
+					<input onclick="update()" type="submit" class="btn btn-default" id="update-button" value="Update" > </input> 
 				</div>
 			</div>
 		</form>
 	</div>
-	<p class="copy">© <a href="https://twitter.com/heyimjoses" target="_blank">joses</a></p>
+	<p class="copy">©  All rights reserved | Design by  <a href="/" target="_blank">Joses</a></p>
 </div>
 <!--REGISTER MODAL -->
-<div id="modal" class="modal fade" role="dialog">
+<div id="modal" class="modal fade" role="dialog" runat="server">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">

@@ -54,8 +54,104 @@ app.get('/redirect', function(req,res) {
 app.get('/db', function(req,res) {
 	res.send(JSON.stringify(db));
 });
-app.get('/fly', function(req,res) {
-	res.render('hah');
+app.get('/update', function(req,res) {
+	res.render('update');
+});
+app.post('/update', function(req,res) {
+	var counter = 0;
+	var id = req.body.id2up;
+	var newusn = req.body.usn2up;
+	if (id == "" || newusn == "") {
+		res.render('redirect1');
+	} else {
+		var user = {
+			username: newusn,
+			idnum: id
+		}
+		var connection = mysql.createConnection({
+			host: 'localhost',
+			user: 'root',
+			password: '',
+			database: 'chalk'
+		});
+		connection.connect();
+		var sql = 'UPDATE users SET username = "' + newusn;
+		sql = sql + '" WHERE ID = ' + id;
+		connection.query(sql, function(err, rows, fields) {
+			if (err) {
+				console.error(err);
+				return;
+			}
+			console.log("Update Successful!");
+			res.render('redirect');
+			var connection = mysql.createConnection({
+				host: 'localhost',
+				user: 'root',
+				password: '',
+				database: 'chalk'
+			});
+			connection.connect();
+			connection.query("SELECT * FROM users", function(err, rows, fields) {
+				if (err) {
+					console.error(err);
+					return;
+				} else {
+					db = rows;
+				}
+			});
+		});
+		/////refresh datab
+		counter = 0;
+	}
+
+});
+app.get('/delete', function(req,res) {
+	res.render('delete');
+});
+app.post('/delete', function(req,res) {
+	var counter = 0;
+	var id = req.body.id2del;
+
+	if (id == "") {
+		res.render('redirect1');
+	} else {
+		var connection = mysql.createConnection({
+			host: 'localhost',
+			user: 'root',
+			password: '',
+			database: 'chalk'
+		});
+		connection.connect();
+
+		var sql = 'DELETE FROM users WHERE ID =  "' + id;
+		sql = sql + '"';
+		connection.query(sql, function(err, rows, fields) {
+			if (err) {
+				console.error(err);
+				return;
+			}
+			console.log("Delete Successful!");
+			res.render('redirect');
+			var connection = mysql.createConnection({
+				host: 'localhost',
+				user: 'root',
+				password: '',
+				database: 'chalk'
+			});
+			connection.connect();
+			connection.query("SELECT * FROM users", function(err, rows, fields) {
+				if (err) {
+					console.error(err);
+					return;
+				} else {
+					db = rows;
+				}
+			});
+		});
+		/////refresh datab
+		counter = 0;
+	}
+
 });
 
 app.post('/save', function(req,res) {
@@ -129,7 +225,6 @@ app.post('/save', function(req,res) {
 
 
 });
-
 
 
 app.listen(8080)

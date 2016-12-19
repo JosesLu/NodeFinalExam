@@ -51,10 +51,11 @@ function registrationSuccess() {
 	$('#regEmail1').val('');
 	$('#regPass1').val('');
 	$('#regConfPass1').val('');
-	window.location = '/register';
+	window.location = '/login';
 }
 
 function register() {
+
 	var counter = 0;
 	var regEmail1 = document.getElementById('regEmail').value;
 	var regPass1 = document.getElementById('regPass').value;
@@ -78,11 +79,13 @@ function register() {
 	}
 	if (counter == 0) {
 		registrationSuccess();
+
 	}
 	counter = 0;
 };
 
 function login() {
+
 	$.ajax({
 		url: 'http://localhost:8080/db',
 		type: 'GET',
@@ -133,7 +136,40 @@ function logout() {
 function indextologin() {
 	window.location = '/login';
 }
+function create() {
+    var myWindow = window.open("/register", "Register", "width=553,height=579");
+}
+function up() {
+    var myWindow = window.open("/update", "Update", "width=553,height=549");
+}
+function del() {
+	var myWindow = window.open("/delete", "Delete", "width=553,height=449");
+}
+function deletee() {
+	var counter = 0;
+	var id = document.getElementById('id2del').value;
+	if(id == ''){
+		window.alert('All fields require input.');
+		window.location='/delete';
+	}
+	else{
+		window.alert('Delete Successful!');
+	}
+}
+function update() {
 
+	var counter = 0;
+	var usn = document.getElementById('usn2up').value;
+	var id = document.getElementById('id2up').value;
+	if(usn == '' || id == ''){
+		window.alert('All fields require input.');
+		window.location='/update';
+	}
+	else{
+		window.alert('Update Successful!');	
+	}
+	window.location='/dashboard'
+};
 function populateTable() {
 	$.ajax({
 		url: 'http://localhost:8080/db',
@@ -154,7 +190,7 @@ function populateTable() {
 			var id = data[i].ID;
 			var table = document.getElementById("userTable");
 			// Create an empty <tr> element and add it to the 1st position of the table:
-			var row = table.insertRow(i + 1);
+			var row = table.insertRow(i+1);
 			// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
 			var cell1 = row.insertCell(0);
 			var cell2 = row.insertCell(0);
